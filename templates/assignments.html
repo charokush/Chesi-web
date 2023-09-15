@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block section %}
+
+<section class="hero_section">
+    <div class="hero-container container">
+      <div class="hero_detail-box">
+        <h3>
+          Welcome to <br />
+          Chesingele Secondary
+        </h3>
+        <h1>School</h1>
+        <p>
+          To get comprehensive information regarding the school performance for
+          each year, kindly contact the school’s administration using the contacts
+          given  or visit the school for more information.
+        </p>
+        </div>
+      
+       <div class="jumbotron">
+         <h4 class="hero_section">
+  To view all the posted assignments, scroll down the page:
+</h4>
+<div>
+  <p> Please note that: the assignments should be done as how the teacher instructs.</p>
+
+</div>
+       </div>  
+
+
+
+          
+     
+        </div>
+      </div>
+      
+      </div>
+    </div>
+
+<div class="hero_img-container assignments" >
+        <div class = 'container'>
+        </br>
+      </br>
+          <h3>Assignments</h3>
+          <br>
+          <div class="jumbotron">
+             <table class = "table">
+            <tr>
+              <th scope="col">Number</th>
+              <th scope="col">Class</th>
+              <th scope="col">Subject</th>
+          
+              <th>Action</th>
+            </tr>
+            {% for assignments in assignments %}
+            <tr>
+              <th scope="row">{{assignments.id}}</th>
+              <td>{{assignments.level}}</td>
+              <td>{{assignments.subject}}</td>
+              <td><a href="{{ url_for('display_assignment', assignment_id=assignments.id) }}">{{ assignments.title }}</a></td>
+              </td>
+            </tr>
+            {% endfor %}
+        
+           
+          </table>
+          </div>
+
+  </section>
+      
+  </section>
+
+{%endblock%}

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block nav %}
+<li class="nav-item">
+  <a class="nav-link" href="{{ url_for('logout')}}">Logout</a>
+</li>
+{% endblock %}
+
+{% block section %}
+
+<section class="hero_section">
+    <div class="hero-container container">
+      
+      
+      <div class="hero_detail-box">
+        <h3>
+          Welcome Student <br />
+          {{ session['user_name'] }}
+        </h3>
+        <p> Click on the assignment name to view the instructions.
+            If you have any questions about the assignment, 
+            please contact your teacher..
+        </p>
+
+
+        
+      </div>
+      <div class="well text-center">
+        <ul >
+            {% for memo in memos %}
+            <div class="container">
+                <div class="">
+                    <div class="jumbotron p-3">
+                <h3>{{ memo.title }}</h3>
+                <p>{{ memo.body }}</p>>
+
+                    </div>
+            
+                    
+                </div>
+            </div>
+            {% endfor %}
+            </ul>
+
+      </div>
+ 
+
+
+
+      <div class="hero_img-container assignments">
+        <div class="container"><a href="{{url_for('notes')}}">
+        <button
+            type="button"
+            data-toggle=""
+            data-target=""
+            class="btn btn-success float-right"
+          >
+            View Notes
+          </button>
+      </a>
+          <br>
+          <h3>Assignments</h3>
+          
+          <a href="{{url_for('st_password')}}">
+        <button
+            type="button"
+            data-toggle=""
+            data-target=""
+            class="btn btn-success float-right"
+          >
+            Change my password
+          </button>
+      </a><br><br>
+
+          <table class="table">
+            <tr>
+              <th scope="col">Number</th>
+              <th scope="col">Class</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Title</th>
+            </tr>
+            {% for assignment in assignments %}
+<tr>
+    <th scope="row">{{ assignment.id }}</th>
+    <td>{{ assignment.class_name }}</td>
+    <td>{{ assignment.subject }}</td>
+    <td><a href="{{ url_for('display_assignment', assignment_id=assignment.id) }}">{{ assignment.title }}</a></td>
+
+</tr>
+{% endfor %}
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+      
+{% endblock %}

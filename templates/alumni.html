@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alumni Upload</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'css/bootstrap.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'css/bootstrap.min.css')}}" />
+     <link rel="icon" href="{{ url_for('static', filename='images/logo_chesi.ico') }}" type="image/x-icon">
+</head>
+<style>
+     .flash-success {
+        color: green;
+        background-color: lightgreen;
+        border: 1px solid green;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+<body>
+
+    <div class="container">
+        <h1 class="mt-5">Alumni Upload</h1>
+        <form method="POST" enctype="multipart/form-data" action="/upload_alumni">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="story">Story:</label>
+                <textarea class="form-control" id="story" name="story" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Image:</label>
+                <input type="file" class="form-control-file" id="image" name="image" accept="image/*" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class="flash-messages">
+            {% for category, message in messages %}
+                <li class="flash-{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+        <h2 class="mt-5">Uploaded Alumnis:</h2>
+        <ul class="list-group">
+            {% for image in images %}
+                <li class="list-group-item">
+                    <h5 class="mb-3">{{ image.name }}</h5>
+                    <p>{{ image.story }}</p>
+                    <img src="{{ image.filename }}" alt="{{ image.name }}" class="img-fluid" width="200px">
+                    <form method="POST" action="/delete_alumni/{{ image.id }}">
+                        <button type="submit" class="btn btn-danger mt-3">Delete</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Add Bootstrap JS and jQuery (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block section %}
+<div class="container">
+    <table class="table table-dark table-hover">
+  <tr>
+    <th>ID</th>
+    <th>File Name</th>
+    <th>Posts</th>
+    <th>Read</th>
+  </tr>
+  <tbody>
+    {% for post in posts %}
+    <tr>
+      <td>{{ post.id }}</td>
+      <td>{{ post.file_name }}</td>
+      <td>{{ post.teacher }}</td>
+      <td><button class="btn btn-outline-success">
+          <a href="{{ url_for('static', filename='notes/' + post.file_name) }}" target="_blank">Read File</a>
+      </button></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+
+{% endblock %}

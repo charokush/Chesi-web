@@ -1,0 +1,51 @@
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo_chesi.ico') }}" type="image/x-icon">
+    <link
+      href="{{url_for('static',filename = 'css/login.css')}}"
+      rel="stylesheet"
+    />
+    <div class="center">
+        <h1>Login</h1>
+    <form method="POST">
+        <div class="inputbox">
+            <label for="job_no">Job Number:</label>
+        <input type="text" name="job_no" required><br><br>
+        </div>
+        <div class="inputbox">
+            <label for="password">Password:</label>
+        <input type="password" name="password" required><br><br>
+        </div>
+        
+        <div class="inputbox">
+          <input type="submit" value="Login" />
+        </div>
+      </form>
+    </div>
+    <button type="button" class="btn btn-secondary"></button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    </div>
+    
+</body>
+</html>

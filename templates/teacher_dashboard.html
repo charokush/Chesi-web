@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block nav %}
+<li class="nav-item">
+  <a class="nav-link" href="{{ url_for('logout')}}">Logout</a>
+</li>
+{% endblock %}
+
+
+{% block section %}
+<style type="text/css">
+.custom-jumbotron {
+    max-height: 6cm; /* You can adjust this value as needed */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+}
+.charo-jumbotron {
+    max-height: 12cm; /* You can adjust this value as needed */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+}
+</style>
+<section class="hero_section">
+ 
+    <div class="hero-container container">
+      <div class="hero_detail-box">
+        <h3>
+  Welcome Teacher <br /><p>Job Number: {{ teacher_job_no }}</p>
+  {{ teacher_name }}
+</h3>
+        <p> Post Assignments in this page.
+            Once you have posted an assignment, students will be able
+             to see it in their dashboard.
+        </p>
+
+
+
+        
+
+
+
+
+<ul >
+
+  
+        
+</div>
+           
+<div class="container">
+    <div class="">
+        <a class = "btn btn-success" href="/add_assignment">Add Assignment</a>
+        
+      <a class = "btn btn-success" href="{{url_for('upload_notes')}}">Add Notes file</a>
+      
+      <a class = "btn btn-success" href="{{url_for('assignments')}}">Other Assignments</a>
+    
+      <a class = "btn btn-success" href="{{url_for('te_password')}}">My Password</a>
+        </div>
+        <div class="jumbotron custom-jumbotron p-3">
+          {% for memo in memos %}
+            <h3>{{ memo.title }}</h3>
+            <p>{{ memo.body }}</p>
+            
+            <form action="/delete_memo/{{ memo.id }}" method="POST">
+             
+            </form>
+      {% endfor %} 
+       </div>
+    </div>
+</div>
+
+            </ul>
+        
+          
+     </div>
+
+   </div>
+        </div>
+      </div>
+      
+      </div>
+    </div>
+  </section>
+      
+  </section>
+
+{%endblock%}
+
+
+{% block body %}
+<br>
+<br>
+<div class="jumbotron charo-jumbotron p-3">
+  
+<div class="container">
+
+          <h3>Assignments</h3>
+          <br>
+
+
+
+
+           
+          <table class = "table">
+            <tr>
+              <th scope="col">Number</th>
+              <th scope="col">Class</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Title</th>
+              <th scope="col"> Action</th>
+            </tr>
+            {% for assignment in assignments %}
+            <tr>
+              <th scope="row">{{assignment.id}}</th>
+              <td>{{assignment.level}}</td>
+              <td>{{assignment.subject}}</td>
+              <td><a href="{{ url_for('display_assignment', assignment_id=assignment.id) }}">{{ assignment.title }}</a></td>
+
+              <td>
+                
+                 <form method="POST" action="/delete_assignment/{{ assignment.id }}">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+              
+            </td>
+            </tr>
+            {% endfor %}
+                    
+          </table>
+
+{% endblock %}
+
+
+
+
+
+
+
+

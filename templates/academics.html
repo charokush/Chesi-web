@@ -1,0 +1,129 @@
+{% extends "base.html" %} {% block section %}
+
+<section class="hero_section">
+  <div class="hero-container container">
+    <div class="hero_detail-box">
+      <h3>
+        At <br />
+        Chesingele Secondary<br />
+        School
+      </h3>
+      <p>
+        Academic excellence is at the core of our
+        educational philosophy. Our dedicated faculty utilizes engaging
+        instructional strategies, personalized attention, and advanced resources
+        to foster a stimulating learning environment that promotes academic
+        growth, cultivates essential skills, and prepares students for future
+        success.
+      </p>
+      <!-- <div class="hero_btn-continer">
+        <a href="contact.html" class="call_to-btn btn_white-border">
+          <span> Contact </span>
+          <img
+            src="{{url_for('static',filename = 'images/right-arrow.png')}}"
+            alt=""
+          />
+        </a>
+      </div> -->
+    </div>
+    <div class="hero_img-container new_hero" >
+      <div class = 'container'>
+      </br>
+    </br>
+  </br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+        <h3>Assignments</h3>
+        <br>
+      
+   
+        <p class="lh-base">
+          Discover the power of collaboration and engagement on our school website! Teachers, harness the potential by logging in to post thought-provoking assignments that inspire and empower our students. Students, embark on a transformative learning journey as you log in to explore, engage with, and complete assignments that foster creativity, critical thinking, and personal growth.</p>
+        <a href="{{url_for('login')}}" class="call_to-btn btn_white-border">
+          <span> Login </span>
+          <img
+            src="{{url_for('static',filename = 'images/right-arrow.png')}}"
+            alt=""
+          />
+        </a>
+      </div>
+    </div>
+    
+    </div>
+  </div>
+</section>
+{% endblock %} {% block body %}
+
+<!-- teacher section -->
+<section class="teacher_section layout_padding-bottom">
+  <div class="container">
+    <h2 class="main-heading">Our Teachers</h2>
+    <p class="text-center">
+      Our dedicated team of highly qualified and passionate teachers brings a
+      wealth of expertise and enthusiasm to the classroom, creating an engaging
+      and supportive learning environment for our students.
+    </p>
+    <div class="teacher_container layout_padding2">
+      <div class="card-deck">
+        <div class="card">
+          <img
+            class="card-img-top"
+            src="{{url_for('static',filename = 'images/teacher-1.jpeg')}}"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Principal Mr. Mwangi Mutah</h5>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            class="card-img-top"
+            src="{{url_for('static',filename = 'images/teacher-2.jpeg')}}"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Deputy Principal Mr. Robert Auko</h5>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            class="card-img-top"
+            src="{{url_for('static',filename = 'images/teacher-3.jpeg')}}"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Senior Teacher </h5>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            class="card-img-top"
+            src="{{url_for('static',filename = 'images/teacher-4.jpeg')}}"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Senior Teacher </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center mt-3">
+      <a href="{{ url_for('pictures') }}" class="call_to-btn">
+
+        <span> See More </span>
+        
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- teacher section -->
+
+{% endblock %}

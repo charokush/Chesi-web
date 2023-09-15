@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block section %}
+
+<section class="hero_section">
+  <div class="hero-container container">
+    <div class="hero_detail-box">
+      <h3>
+        Welcome to <br />
+        Chesingele Secondary
+      </h3>
+      <h1>School</h1>
+      <p>
+        To get comprehensive information regarding the school performance for
+        each year, kindly contact the school’s administration using the contacts
+        given below or visit the school for more information.
+      </p>
+      <div class="hero_btn-continer">
+        <a href="" class="call_to-btn btn_white-border">
+          <span> Contact </span>
+          <img
+            src="{{url_for('static',filename = 'images/right-arrow.png')}}"
+            alt=""
+          />
+        </a>
+      </div>
+    </div>
+    
+</section>
+{% endblock %}
+
+{% block body %}
+  <!-- contact section -->
+
+<section class="contact_section layout_padding-bottom">
+  <div class="container">
+    <h2 class="main-heading">chesingele05@gmail.com</h2>
+    <p class="text-center">
+      Have questions or need more information? Our friendly staff is ready to
+      assist you. You can contact us or send us an Email. We are here to support you in any way we can.
+    </p>
+    <div class="center">
+      <h3></h3>
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- end contact section -->
+
+{% endblock %}
+
+

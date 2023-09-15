@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Assignment</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/bootstrap.css')}}" />
+</head>
+<body>
+    <div class="jumbotron p-3">
+        <div class="well text-center">
+            <h1>Add Assignment</h1>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="teacher_job_no" class="form-label">Teacher's Job Number: {{ teacher_job_no }}</label>
+        <input type="hidden" id="teacher_name" name="teacher_name" value="{{ teacher_name }}">
+    </div>
+
+    <div class="jumbotron p-3 container">
+        <form method="POST" action="{{ url_for('insert_assignment') }}">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="subject" class="form-label">Subject</label>
+                <input type="text" class="form-control" id="subject" name="subject" required>
+            </div>
+            <div class="mb-3">
+                <label for="level" class="form-label">Class</label>
+                <input type="text" class="form-control" id="level" name="level" required>
+            </div>
+            <div class="mb-3">
+                <label for="body" class="form-label">Body</label>
+                <textarea class="form-control" id="body" name="body" rows="5" required></textarea>
+            </div>
+            <div class="mb-3">
+    <label for="teacher_post" class="form-label">Teacher's Job Number</label>
+    <input type="text" class="form-control" id="teacher_post" name="teacher_post" value="{{ teacher_job_no }}" readonly required>
+</div>
+
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+    </div>
+</body>
+</html>

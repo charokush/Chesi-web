@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Items</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'css/bootstrap.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'css/bootstrap.min.css')}}" />
+<link rel="icon" href="{{ url_for('static', filename='images/logo_chesi.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">About Items</h1>
+
+        <form method="POST" action="/add_about" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Image:</label>
+                <input type="file" class="form-control-file" id="image" name="image">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <input type="text" class="form-control" id="description" name="description">
+            </div>
+
+            <div class="form-group">
+                <label for="note">Note:</label>
+                <input type="text" class="form-control" id="note" name="note" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <ul class="list-unstyled mt-4">
+            {% for about_item in about_items %}
+                <li class="media mb-4">
+                    {% if about_item.image %}
+                        <img src="{{ url_for('static', filename=about_item.image) }}" class="mr-3" alt="{{ about_item.description }}" style="max-width: 100px;">
+                    {% endif %}
+                    <div class="media-body">
+                        <h2 class="mt-0">{{ about_item.title }}</h2>
+                        {% if about_item.description %}
+                            <p>Description: {{ about_item.description }}</p>
+                        {% endif %}
+                        <p>Note: {{ about_item.note }}</p>
+
+                        <!-- Add a delete button with a form for each post -->
+                        <form method="POST" action="{{ url_for('delete_about', id=about_item.id) }}">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <!-- Include Bootstrap JS and Popper.js (if needed) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

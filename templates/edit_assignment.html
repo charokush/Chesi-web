@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block nav %}
+<li class="nav-item">
+  <a class="nav-link" href="{{ url_for('logout')}}">Logout</a>
+</li>
+{% endblock %}
+
+{% block section %}
+<section class="hero_section">
+    <div class="hero-container container">
+        <div class="hero_detail-box">
+            <h3>Edit Assignment</h3>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="new_title">Title</label>
+                    <input type="text" class="form-control" id="new_title" name="title" value="{{ assignment.title }}">
+                </div>
+                <div class="form-group">
+                    <label for="new_subject">Subject</label>
+                    <input type="text" class="form-control" id="new_subject" name="subject" value="{{ assignment.subject }}">
+                </div>
+                <div class="form-group">
+                    <label for="new_body">Body</label>
+                    <textarea class="form-control" id="new_body" name="body">{{ assignment.body }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="posts">Posts:</label>
+                    <input type="checkbox" id="posts" name="posts" {% if assignment.posts %}checked{% endif %}>
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Us</title>
+    <!-- Include Bootstrap CSS -->
+   <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'css/bootstrap.css')}}" />
+   <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'css/bootstrap.min.css')}}" />
+   <link rel="icon" href="{{ url_for('static', filename='images/logo_chesi.ico') }}" type="image/x-icon">
+
+    <!-- Include Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/james.css')}}" />
+    <style>
+        /* Additional Custom CSS Styles */
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .jumbotron {
+            background-color: #001f3f; /* Navy */
+            color: #fff;
+            padding: 60px 0;
+        }
+
+        .jumbotron h1 {
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .nav-item {
+            cursor: pointer;
+            background-color: #001f3f; /* Navy */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+
+        .nav-item button {
+            background-color: #001f3f; /* Navy */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+
+        .nav-item button:hover {
+            background-color: #003366; /* Darker Navy */
+        }
+
+        .content {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .media {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .media img {
+            max-width: 70%;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+
+        .note {
+            flex: 1;
+        }
+
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .custom-heading {
+            font-size: 36px;
+            font-weight: bold;
+            color: #001f3f; /* Navy */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Style for motto, vision, and mission sections */
+        .motto,
+        .vision,
+        .mission,
+        .core-values {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /* Style for motto, vision, and mission titles */
+        .motto h3,
+        .vision h3,
+        .mission h3,
+        .core-values h3 {
+            color: #001f3f; /* Navy */
+        }
+
+        /* Style for motto, vision, and mission content */
+        .motto h5,
+        .vision h5,
+        .mission h5,
+        .core-values ul {
+            color: #333; /* Dark Gray */
+        }
+
+        .core-values li {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333; /* Adjust the color as desired */
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+        }
+        .content-box {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc; /* Add a border */
+            border-radius: 5px;
+        }
+        .small-container {
+            background-color: #f0f0f0; /* Change the background color */
+            padding: 20px;
+            border: 2px solid #3498db; /* Add a border */
+            border-radius: 10px;
+            margin: 20px auto; /* Center the container */
+        }
+        .nav-item {
+            cursor: pointer;
+        }
+        .content {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col text-center">
+                <h1 class="custom-heading">About Us</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <ul class="nav justify-content-center">
+            {% for about_item in about_items %}
+            <li class="nav-item">
+                <button class="btn btn-info"><h2 class="mt-0">{{ about_item.title }}</h2></button>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <div class="container">
+            <ul class="list-unstyled mt-4">
+                {% for about_item in about_items %}
+                <li class="content">
+                    <div class="media">
+                        {% if about_item.image %}
+                        <img src="{{ url_for('static', filename=about_item.image) }}" alt="{{ about_item.description }}">
+                        {% endif %}
+                        <div class="note">
+                            <p>Note: {{ about_item.note }}</p>
+                        </div>
+                    </div>
+                    {% if about_item.description %}
+                    <p>Description: {{ about_item.description }}</p>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+<div class="container small-container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                <div class="content-box">
+                    <h2>Motto</h2>
+                    <h4>FOREVER SHINE</h4>
+                   
+                </div>
+            </div>
+            <div class="col-md-6 text-center">
+                <div class="content-box">
+                    <h2>Our Vision</h2>
+                    <h4>To Excel In Nurturing Strong, Spiritual And Intellectual Values</h4>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                <div class="content-box">
+                    <h2>Our Mission</h2>
+                    <h4>Nurture Client Abilities And Talents For Academic Advancement And Economic Independence</h4>
+                     <img
+              src="{{url_for('static',filename = 'images/logo_chesi.ico')}}"
+              alt=""
+
+            />
+                </div>
+            </div>
+            <div class="col-md-6 text-center">
+                <div class="content-box custom-content-box">
+                    <h2 class="custom-heading">Core Values</h2>
+                    <ul class="core-values">
+                        <li>Spiritual Uprightness</li>
+                        <li>Moral Uprightness</li>
+                        <li>Resilience</li>
+                        <li>Diligence</li>
+                        <li>Self Awareness</li>
+                        <li>Inter-dependency</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const navItems = document.querySelectorAll('.nav-item');
+        const contents = document.querySelectorAll('.content');
+
+        navItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                // Hide all contents
+                contents.forEach(content => {
+                    content.style.display = 'none';
+                });
+
+                // Display the selected content
+                contents[index].style.display = 'block';
+            });
+        });
+    </script>
+</body>
+
+</html>

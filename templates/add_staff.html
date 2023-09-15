@@ -1,0 +1,249 @@
+{% extends 'base.html' %} 
+
+{% block nav %}
+<li class="nav-item">
+  <a class="nav-link" href="{{ url_for('add_news')}}">Add News</a>
+</li>
+
+<li class="nav-item">
+  <a class="nav-link" href="{{ url_for('photos')}}">Add Photos</a>
+</li>
+
+<li class="nav-item">
+  <a class="nav-link" href="{{ url_for('logout')}}">Logout</a>
+</li>
+{% endblock %}
+{% block section %}
+<div class="jumbotron p-3">
+  <div class="well text-center">
+    <a href="{{ url_for('admin_dashboard')}}">
+      <button
+            type="button"
+            
+            class="btn btn-success float-right"
+          >
+            Manage Students
+          </button>
+    </a> 
+    <a href="{{ url_for('memo')}}">
+      <button
+            type="button"
+            
+            class="btn btn-success float-right"
+          >
+            Send Memo
+          </button>
+    </a> 
+    <a href="{{ url_for('alumni')}}">
+      <button
+            type="button"
+            
+            class="btn btn-success float-right"
+          >
+            New Alumni
+          </button>
+    </a> 
+    <h1>This is admin dashboard</h1>
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col md-12">
+      <div class="jumbotron p-3" text-align="center">
+        <h2>
+          Manage <b>Teachers </b>
+
+          <button
+            type="button"
+            data-toggle="modal"
+            data-target="#mymodal"
+            class="btn btn-success float-right"
+          >
+            Add New
+          </button>
+        
+        </h2>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+
+
+        <div class="alert alert-success alert-dismisable" role = "alert">
+          <button type = "button" class = "close" data-dismiss="alert" aria-label="close">
+           <span>x</span>
+          </button>
+         {{message}}
+        </div>
+             
+         {% endfor %}
+         {% endif %}
+        {% endwith %}
+
+        {% endblock %}
+
+        {% block body %}
+
+<table class="table table-dark table-hover">
+    <tr>
+        <th>ID</th>
+        <th>Job No.</th>
+        <th>Name</th>
+        <th>Classes</th>
+        <th>Subject 1</th>
+        <th>Subject 2</th>
+        <th> Department </th>
+        <th> HOD</th>
+        <th>Action</th>
+        
+    </tr>
+    {% for teacher in teachers %}
+    <tr>
+        <td>{{ teacher.id }}</td>
+        <td>{{ teacher.job_no }}</td>
+        <td>{{ teacher.name }}</td>
+        <td>{{ teacher.classes }}</td>
+        <td>{{ teacher.subject1 }}</td>
+        <td>{{ teacher.subject2 }}</td>
+        <td>{{ teacher.department }}</td>
+        <td>  {{ teacher.posts}} <td>
+
+        <td>
+         
+    <a href="/delete_teacher/{{ teacher.id }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete?')">Delete</a>
+        </td>
+
+</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+
+
+
+
+
+      </div>
+
+      <!-- Modal Add user -->
+
+    <div id="mymodal" class="modal fade" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Add New Staff</h4>
+              
+            </div>
+
+
+            <div class="modal-body">
+              <form action=" {{url_for('insert_teacher')}} " method="POST">
+                <div class="form-group">
+                  <label for="">Job. Num: </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="job_no"
+                    required="1"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="">Name : </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    required="1"
+                  />
+                </div>
+
+
+                <div class="form-group">
+                  <label for="">Password : </label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    required="1"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="">Classes </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="classes"
+                    required="1"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="">1st Subject </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="subject1"
+                    required="1"
+                  />
+                </div>
+
+                 <div class="form-group">
+                  <label for="">2nd Subject1 </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="subject2"
+                    required="1"
+                  />
+                </div>
+           
+              <div class="form-group">
+                  <label for="">Department </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="department"
+                    required=""
+                  />
+                </div>
+                <div class="">
+    <label for="">Head Of Department </label><br>
+    <label for="true_radio">Yes:</label>
+    <input type="radio" id="true_radio" name="posts" value="true">
+    
+    <label for="false_radio">No:</label>
+    <input type="radio" id="false_radio" name="posts" value="false">
+</div>
+
+
+                <div class="form-group">
+                  <button class="btn btn-primary" type="submit">Add</button>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+

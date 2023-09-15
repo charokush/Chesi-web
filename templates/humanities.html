@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block nav %}
+<li class="nav-item">
+  <a class="nav-link" href="{{ url_for('logout')}}">Logout</a>
+</li>
+{% endblock %}
+
+
+{% block section %}
+
+<section class="hero_section">
+    <div class="hero-container container">
+      <div class="hero_detail-box">
+        <h3>
+  Welcome To Humanities Department. <br /><p> {{ teacher_name }}</p>
+  
+</h3>
+        <p> Confirm The Assignments by cheking the box for the students to see
+        </p>
+
+        <br><br>
+        <a class = "btn btn-success" href="/add_assignment">Add Assignment</a>
+        <br>
+        <br>
+        <a class = "btn btn-success" href="{{url_for('files')}}">Notes Approval</a>
+        </div>
+      <div class="hero_img-container assignments" >
+        <div class = 'container'>
+        </br>
+      </br>
+          <h3>Assignments</h3>
+          <br>
+          
+          <table class = "table">
+            <tr>
+              <th scope="col">Number</th>
+              <th scope="col">Class</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Title</th>
+            </tr>
+            {% for assignment in assignments %}
+            <tr>
+              <th scope="row">{{assignment.id}}</th>
+              <td>{{assignment.level}}</td>
+              <td>{{assignment.subject}}</td>
+              <td><a href = "assignment/{{assignment.id}}">{{assignment.title}}</a></td>
+              <td>
+                
+                 <form method="POST" action="/delete_assignment/{{ assignment.id }}">
+                <a href="/edit_assignment/{{ assignment.id }}" class="btn btn-warning">Edit</a>
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+              
+            </td>
+            </tr>
+            {% endfor %}
+        
+           
+          </table>
+
+
+         
+          
+     
+        </div>
+      </div>
+      
+      </div>
+    </div>
+  </section>
+      
+  </section>
+
+{%endblock%}
+
+
+
+
+
+
+
+
+
+
+

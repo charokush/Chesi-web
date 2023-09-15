@@ -1,0 +1,308 @@
+{% extends "base.html" %} {% block section %}
+<section class="hero_section">
+  <div class="hero-container container">
+    <div class="hero_detail-box">
+       <h3 >
+        Welcome to <br />
+        Chesingele Secondary
+      </h3 id="myHeading">
+      <script>
+        // Get the heading element by its ID
+        const heading = document.getElementById('myHeading');
+        
+        // Change the font color and background color
+        heading.style.color = 'blue';
+        heading.style.backgroundColor = 'yellow';
+      </script>
+      <h1>School</h1>
+      <p>
+        To get comprehensive information regarding the school performance for
+        each year, kindly contact the school’s administration using the contacts
+        given below or visit the school for more information.
+      </p>
+      
+    
+    </div>
+      <div class = 'container-fluid'>
+
+        
+      
+   <ul ><div class="well text-center" float:left;><h3>Noticeboard</h3></div>
+            {% for post in news_posts %}
+            <li class="list-group-item">
+                <h4>{{ post.title }}</h4>
+                <p>{{ post.body }}</p>
+            </li>
+            {% endfor %}
+            </ul>
+        
+        
+          <img
+            src="{{url_for('static',filename = 'images/right-arrow.png')}}"
+            alt=""
+          />
+        </a>
+      </div>
+    </div>
+    
+    </div>
+  </div>
+</section>
+
+{% endblock %} {% block body %}
+
+<!-- about section -->
+<section class="about_section layout_padding">
+  <div class="container">
+    <h2 class="main-heading">About School</h2>
+    <p class="text-center">
+      At Chesingele secondary school, we strive to provide a well-rounded
+      education that nurtures the intellectual, social, and emotional
+      development of our students, equipping them with the skills and knowledge
+      to thrive in an ever-changing world
+    </p>
+    <div class="about_img-box">
+      <img
+        src="{{url_for('static',filename = 'images/kids.jpg')}}"
+        alt=""
+        class="img-fluid w-100"
+      />
+    </div>
+    <div class="d-flex justify-content-center mt-5">
+      <a href="{{ url_for('about') }}" class="call_to-btn">
+        <span> Read More </span>
+        
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- about section -->
+
+<!-- teacher section -->
+<section class="teacher_section layout_padding-bottom">
+  <div class="container">
+    <h2 class="main-heading">Our Teachers</h2>
+    <p class="text-center">
+      Our dedicated team of highly qualified and passionate teachers brings a
+      wealth of expertise and enthusiasm to the classroom, creating an engaging
+      and supportive learning environment for our students.
+    </p>
+    <div class="teacher_container layout_padding2">
+      <div class="card-deck">
+        <div class="card">
+          <img
+            class="card-img-top"
+            src="{{url_for('static',filename = 'images/teacher-1.jpeg')}}"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Principal Mr. Mwangi Mutah</h5>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            class="card-img-top"
+            src="{{url_for('static',filename = 'images/teacher-2.jpeg')}}"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Deputy Principal Mr. Robert Ouko</h5>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            class="card-img-top"
+            src="{{url_for('static',filename = 'images/teacher-3.jpeg')}}"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Senior Teacher Mr.Machoka</h5>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            class="card-img-top"
+            src="{{url_for('static',filename = 'images/teacher-4.jpeg')}}"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Senior Teacher Mr. Ngigi</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center mt-3">
+      <a href="{{ url_for('pictures') }}" class="call_to-btn">
+
+        <span> See More </span>
+        
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- teacher section -->
+
+<!-- vehicle section -->
+<section class="vehicle_section layout_padding">
+  <div class="container">
+    <h2 class="main-heading">Upcoming Events</h2>
+    <p class="text-center">
+      Stay updated and mark your calendars for a range of exciting upcoming
+      events at our secondary school, including engaging guest speakers,
+      captivating performances, and interactive workshops designed to enrich
+      students' learning experiences.
+    </p>
+    <div class="layout_padding-top">
+      <div
+        id="carouselExampleControls"
+        class="carousel slide"
+        data-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="vehicle_img-box">
+              <img
+                src="{{url_for('static',filename = 'images/one.jpg')}}"
+                alt=""
+                class="img-fluid w-100"
+              />
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="vehicle_img-box">
+              <img
+                src="{{url_for('static',filename = 'images/two.jpg')}}"
+                alt=""
+                class="img-fluid w-100"
+              />
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="vehicle_img-box">
+              <img
+                src="{{url_for('static',filename = 'images/three.jpg')}}"
+                alt=""
+                class="img-fluid w-100"
+              />
+            </div>
+          </div>
+        </div>
+        <a
+          class="carousel-control-prev"
+          href="#carouselExampleControls"
+          role="button"
+          data-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#carouselExampleControls"
+          role="button"
+          data-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- vehicle section -->
+<!-- client section -->
+<section class="client_section layout_padding">
+  <div class="container">
+    <h2 class="main-heading">Our Alumni Feedback</h2>
+    <p class="text-center">
+      We value the voices of our students, and their feedback is integral to our
+      commitment to continuous improvement. Hear directly from our students
+      about their experiences, testimonials, and how our school has positively
+      impacted their learning journey
+    </p>
+    <div class="layout_padding2">
+      <div class="client_container d-flex flex-column">
+        <div class="client_detail d-flex align-items-center">
+          <div class="client_img-box">
+            <img
+              src="{{url_for('static',filename = 'images/student.png')}}"
+              alt=""
+
+            />
+          </div>
+          <div class="client_detail-box">
+            <h4>James Kariuki</h4>
+            <span> (exercitation) </span>
+          </div>
+        </div>
+        <div class="client_text mt-4">
+          <p>
+            "Attending Chesingele Secondary School was a transformative
+            experience that laid the foundation for my future success. The
+            dedicated teachers, rigorous academic curriculum, and vibrant
+            extracurricular activities shaped my character, instilled a love for
+            learning, and prepared me for the challenges of higher education and
+            beyond. The supportive community at Chesingele Secondary School
+            fostered lifelong friendships and provided countless opportunities
+            for personal growth. I am grateful for the strong values and skills
+            I developed during my time at Chesingele Secondary School, which
+            continue to guide me in my professional and personal endeavors. I
+            can confidently say that Chesingele Secondary School prepared me to
+            thrive in a competitive world and set me on a path to achieve my
+            dreams."
+          </p>
+         <div class="d-flex justify-content-center mt-3">
+      <a href="{{ url_for('alumnis') }}" class="call_to-btn">
+
+        <span> See More </span>
+        
+      </a>
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- client section -->
+
+
+
+<!-- admission section -->
+<section class="admission_section">
+  <div class="container-fluid position-relative">
+    <div class="row h-100">
+      <div id="map" class="h-100 w-100"></div>
+      <div class="container">
+        <div class="admission_container position-absolute">
+          <div class="admission_img-box">
+          <!--  <img src="{{url_for('static',filename = 'images/kidss.jpg')}}" alt="" />
+
+          </div>
+          <div class="admission_detail">
+            <h3>Apply for Admission</h3>
+            <p class="mt-3 mb-4">
+              We invite aspiring students to embark on an exceptional
+              educational journey by applying for admission to our secondary
+              school, where they will find a nurturing environment, dedicated
+              teachers, and a comprehensive curriculum that fosters academic
+              excellence.
+            </p>
+            <div class="">
+              <a href="" class="admission_btn btn_on-hover"> Read More </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> --> 
+</section>
+<!-- admission section -->
+
+
+{% endblock %}

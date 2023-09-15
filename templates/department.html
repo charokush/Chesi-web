@@ -1,0 +1,34 @@
+{% extends 'base.html' %} 
+
+{% block nav %}
+
+{% endblock %}
+{% block section %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/james.css') }}">
+<div class="container-fluid">
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <div class="jumbotron p-4 text-center">
+                <h1>Welcome to <b>Chesingele</b><i> School</i></h1>
+                <p class="lead">Choose your login panel:</p>
+                <div class="btn-group btn-group-lg">
+                    <a href="{{ url_for('student_login')}}" class="btn btn-primary">Student Panel</a>
+                    <a href="staff_login" class="btn btn-success">Teacher Panel</a>
+                    <a href="hod_login" class="btn btn-info">Departments</a>
+                    <a href="{{url_for('admin_login')}}" class="btn btn-danger">Admin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+    
+
+{% block body %}
+
+
+
+{% endblock %}
+

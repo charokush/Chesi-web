@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Gallery</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo_chesi.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS for gallery */
+        .image-container {
+            padding: 15px;
+        }
+        .gallery-image {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-5">Image Gallery</h1>
+    </div>
+   
+    <div class="container">
+        <div class="row">
+            {% for image in uploaded_images %}
+            <div class="col-md-4 image-container">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/' + image.filename) }}" alt="{{ image.description }}" class="card-img-top gallery-image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ image.description }}</h5>
+                        
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

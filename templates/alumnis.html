@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Alumnis</title>
+</head>
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'css/bootstrap.css')}}" />
+  <!-- progress barstle -->
+  <link rel="stylesheet" href="{{url_for('static',filename = 'css/css-circular-prog-bar.css')}}">
+  <!-- fonts style -->
+  <link href="{{url_for('static',filename = 'https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap')}}" rel="stylesheet">
+  <!-- font wesome stylesheet -->
+  <link rel="stylesheet" href="{{url_for('static',filename = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')}}">
+  <!-- Custom styles for this template -->
+  <link href="{{url_for('static',filename = 'css/style.css')}}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{{url_for('static',filename = 'css/responsive.css')}}" rel="stylesheet" />
+
+<link rel="icon" href="{{ url_for('static', filename='images/logo_chesi.ico') }}" type="image/x-icon">
+  <link rel="stylesheet" href="{{url_for('static',filename = 'css/css-circular-prog-bar.css')}}">
+
+
+   <style type="text/css">
+    body{
+      background-color: lavenderblush;
+    }
+  </style>
+<body>
+ 
+	{% for image in images %}
+	 <div class="layout_padding2">
+      <div class="client_container d-flex flex-column">
+        <div class="client_detail d-flex align-items-center">
+          <div class="client_img-box">
+            <img src="{{ image.filename }}" alt="{{ image.name }}">
+          </div>
+          <div class="client_detail-box">
+            <h4>{{ image.name }}</h4>
+            <span> (exercitation) </span>
+          </div>
+        </div>
+        <div class="client_text mt-4">
+          <p>
+         {{ image.story }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+	
+
+</body>
+</html>

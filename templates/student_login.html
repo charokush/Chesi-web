@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <link
+      href="{{url_for('static',filename = 'css/login.css')}}"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="{{ url_for('static', filename='images/logo_chesi.ico') }}" type="image/x-icon">
+  </head>
+  <body>
+    <div class="center">
+      <h1>Assignment section</h1>
+
+      {% with messages = get_flashed_messages() %} {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} {% endwith %}
+
+      <form method="POST" action="{{ url_for('student_login') }}">
+        <div class="inputbox">
+          <input type="text" id="adm" name="adm" required />
+          <span>Number</span>
+        </div>
+        <div class="inputbox">
+          <input type="password" id="password" name="password" required />
+          <span>Password</span>
+        </div>
+        <div class="inputbox">
+          <input type="submit" value="Login" />
+        </div>
+      </form>
+    </div>
+    <button type="button" class="btn btn-secondary"></button>
+  </body>
+</html>
